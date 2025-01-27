@@ -1,4 +1,4 @@
-package com.orkhontech.notesapp.ui.theme
+package com.orkhontech.notesapp.common.theme
 
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color

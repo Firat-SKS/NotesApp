@@ -1,4 +1,4 @@
-package com.orkhontech.notesapp.ui.theme
+package com.orkhontech.notesapp.common.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
