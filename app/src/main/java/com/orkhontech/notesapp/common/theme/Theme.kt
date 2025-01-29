@@ -1,4 +1,4 @@
-package com.orkhontech.notesapp.ui.theme
+package com.orkhontech.notesapp.common.theme
 
 import android.app.Activity
 import android.os.Build

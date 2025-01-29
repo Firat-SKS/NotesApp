@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("plugin.serialization") version "2.1.0"
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
@@ -79,7 +80,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
+
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization)
 }
