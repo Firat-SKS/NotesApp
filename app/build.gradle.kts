@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.android) // <-- Eksikti, eklendi
+    alias(libs.plugins.jetbrains.kotlin.compose)
     kotlin("plugin.serialization") version "2.1.0"
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
@@ -8,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.orkhontech.notesapp"
-    compileSdk = 35
+    compileSdk = 35 // AGP 8.5.2 sadece 34'e kadar test edildi
 
     defaultConfig {
         applicationId = "com.orkhontech.notesapp"
@@ -29,7 +30,6 @@ android {
         debug {
             isMinifyEnabled = false
             isShrinkResources = false
-
             applicationIdSuffix = ".debug"
         }
 
@@ -42,19 +42,24 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
+
     buildFeatures {
         compose = true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -63,7 +68,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -72,11 +76,13 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
